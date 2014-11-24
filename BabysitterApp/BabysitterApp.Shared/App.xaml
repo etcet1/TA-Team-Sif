@@ -1,0 +1,49 @@
+﻿<Application x:Class="BabysitterApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:BabysitterApp"
+             >
+    <Application.Resources>
+        <Style TargetType="TextBlock"
+               x:Name="DefaultTextBlockStyle">
+            <Setter Property="FontSize"
+                    Value="56" />
+        </Style>
+        <DataTemplate x:Name="animalDataTemplate">
+            <Grid Name="animalsGridView">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Name: "
+                           Grid.Row="0"
+                           Grid.Column="0" />
+                <TextBlock Text="{Binding Name}"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           Foreground="{StaticResource ApplicationForegroundThemeBrush}" />
+                <Button Content="Play Sound"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Foreground="{StaticResource ApplicationForegroundThemeBrush}"
+                        Command="{Binding DataConteext.PlayCommand, ElementName=animalsGridView}" CommandParameter="{Binding Sound}"
+                        />
+                <Image Source="{Binding Image}"
+                       Grid.Row="2"
+                       Grid.ColumnSpan="2" />
+            </Grid>
+        </DataTemplate>
+        <Style TargetType="TextBlock"
+               x:Name="bigTextBlock">
+            <Setter Property="FontSize"
+                    Value="36" />
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+        </Style>
+    </Application.Resources>
+</Application>
